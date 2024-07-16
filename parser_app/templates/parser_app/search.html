@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Поиск вакансий</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Поиск вакансий</h1>
+        <form method="post" class="form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.keywords.label_tag }}
+                {{ form.keywords }}
+            </div>
+            <div class="form-group">
+                {{ form.exclude_words.label_tag }}
+                {{ form.exclude_words }}
+            </div>
+            <div class="form-group">
+                {{ form.cities.label_tag }}
+                {{ form.cities }}
+            </div>
+            <div class="form-group">
+                {{ form.salary_min.label_tag }}
+                {{ form.salary_min }}
+            </div>
+            <div class="form-group">
+                {{ form.education.label_tag }}
+                <div>
+                    {{ form.education }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.experience.label_tag }}
+                <div>
+                    {{ form.experience }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.period.label_tag }}
+                <div>
+                    {{ form.period }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Искать</button>
+        </form>
+        {% if hh_url %}
+            <div class="mt-4">
+                <p>Сгенерированный URL:</p>
+                <a href="{{ hh_url }}" target="_blank">{{ hh_url }}</a>
+            </div>
+        {% endif %}
+        <div class="mt-4">
+            <a href="{% url 'job_analytics' %}" class="btn btn-secondary">Перейти к аналитике</a>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

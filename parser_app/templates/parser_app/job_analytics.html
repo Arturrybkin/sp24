@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аналитика по вакансиям</title>
+</head>
+<body>
+    <h1>Аналитика по вакансиям</h1>
+    <p>Общее количество вакансий: {{ total_jobs }}</p>
+    <p>Средняя зарплата: {{ avg_salary|floatformat:2 }}</p>
+    <p>Медианная зарплата: {{ median_salary|floatformat:2 }}</p>
+
+    <h2>Вакансия с минимальной зарплатой</h2>
+    {% if min_salary_job %}
+        <p>Зарплата: {{ min_salary_job.salary }}</p>
+        <p>Название вакансии: {{ min_salary_job.title }}</p>
+        <p>Компания: {{ min_salary_job.company_name }}</p>
+    {% else %}
+        <p>Вакансии не найдены.</p>
+    {% endif %}
+
+    <h2>Вакансия с максимальной зарплатой</h2>
+    {% if max_salary_job %}
+        <p>Зарплата: {{ max_salary_job.salary }}</p>
+        <p>Название вакансии: {{ max_salary_job.title }}</p>
+        <p>Компания: {{ max_salary_job.company_name }}</p>
+    {% else %}
+        <p>Вакансии не найдены.</p>
+    {% endif %}
+</body>
+</html>
