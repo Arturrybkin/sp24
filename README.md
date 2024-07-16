@@ -22,7 +22,7 @@
 git clone https://github.com/Arturrybkin/sp24.git
 cd parsing
 Затем для построения и запуска контейнеров используйте команду:
-javascript
+
 
 
 docker-compose up --build
